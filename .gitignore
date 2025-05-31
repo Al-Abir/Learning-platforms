@@ -1,0 +1,8 @@
+# Ignore server-side dependencies
+/server/node_modules
+/server/.env
+
+
+# Ignore clint side d dependencies
+/client/node_modules
+/client/.env
