@@ -3,6 +3,9 @@ import { GraduationCap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Tabs,  TabsList, TabsTrigger,TabsContent } from "@/components/ui/tabs";
 import { useState } from "react";
+import CommonForm from "../../components/common-form";
+import { signInFormControls, signUpFormControls } from "../../confiq";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card";
 function AuthPage() {
    const [activeTab, setActiveTab] = useState("signin");
 
@@ -32,10 +35,29 @@ function handleTabChange(value) {
           </TabsList>
 
            <TabsContent value="signin">
-              sign in
+             <Card className="p-6 space-y-4">
+                <CardHeader>
+                    <CardTitle>Sign in to your account</CardTitle>
+                    <CardDescription>Enter your email and password to  access your account</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+            <CommonForm formControls={signInFormControls}
+            buttonText={"Sign In"}></CommonForm>
+                </CardContent>
+             </Card>
           </TabsContent>
           <TabsContent value="signup">
-              sign up
+             <Card className="p-6 space-y-4">
+                <CardHeader>
+                    <CardTitle>Create a new Account</CardTitle>
+                    <CardDescription>Enter your details get started</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                   <CommonForm formControls={signUpFormControls}
+             buttonText={"Sign Up"}></CommonForm>
+                </CardContent>
+             </Card>
+            
           </TabsContent>
           </Tabs>
       </div>
