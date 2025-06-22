@@ -8,7 +8,8 @@ function CommonForm({
   buttonText,
   formControls = [],
   formData, 
-  setFormData
+  setFormData,
+  isButtonDisabled = false
 
 }) {
   return (
@@ -18,7 +19,7 @@ function CommonForm({
        formControls={formControls}
        formData={formData}
        setFormData={setFormData}></FormControls>
-      <Button  type="submit" className="mt-5 w-full">
+      <Button  disabled ={isButtonDisabled} type="submit" className="mt-5 w-full">
         {buttonText || "Submit"}
       </Button>
     </form>
