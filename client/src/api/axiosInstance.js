@@ -2,21 +2,14 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: "http://localhost:5000",
- 
 });
 
-// 🛠 interceptor to attach token
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = sessionStorage.getItem("accessToken");
+    const accessToken = JSON.parse(sessionStorage.getItem("accessToken")) || "";
 
-    if (token) {
-      try {
-        const accessToken = JSON.parse(token);
-        config.headers.Authorization = `Bearer ${accessToken}`;
-      } catch (err) {
-        console.error("Token parse error", err);
-      }
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
     }
 
     return config;
@@ -24,4 +17,4 @@ axiosInstance.interceptors.request.use(
   (err) => Promise.reject(err)
 );
 
-export default axiosInstance;
+export default axiosInstance;   
