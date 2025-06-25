@@ -40,6 +40,13 @@ app.use("/student/order", studentViewOrderRoutes);
 app.use("/student/courses-bought", studentCoursesRoutes);
 app.use("/student/course-progress", studentCourseProgressRoutes);
 
+
+app.get("/",(req,res)=>{
+    res.status(200).json({
+    success: true,
+    message: "Succesfully done",
+  });
+})
 app.use((err, req, res, next) => {
   console.log(err.stack);
   res.status(500).json({
